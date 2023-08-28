@@ -18,6 +18,9 @@ export default {
           input: '#040F1A',
         },
       },
+      fontFamily: {
+        sans: ['Nunito', 'sans-serif'],
+      },
     },
   },
   plugins: [],

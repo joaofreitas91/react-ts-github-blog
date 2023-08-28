@@ -7,19 +7,13 @@
 }
 
 body {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  @apply bg-base-background
+  @apply bg-base-background antialiased;
 }
 
 body, input, select, textarea, checkbox, radio {
-  font-family: 'Nunito'; 
-
-  @apply text-base-text
+  @apply font-sans text-base-text;
 }
 
 img {
-  @apply max-w-full;
-  @apply block;
+  @apply max-w-full block;
 }
