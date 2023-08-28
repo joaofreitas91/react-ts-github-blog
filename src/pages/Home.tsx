@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom'
 import { ExternalLink, Github, Building, User2 } from 'lucide-react'
 
 export function Home() {
@@ -17,7 +18,9 @@ export function Home() {
             <a
               className="flex items-center justify-center gap-2 text-base-blue"
               tabIndex={1}
-              href=""
+              target="_blank"
+              href="https://github.com/joaofreitas91"
+              rel="noreferrer"
             >
               <span className="text-xs font-bold">GITHUB</span>
               <ExternalLink className="mb-[2px] h-3 w-3" />
@@ -70,9 +73,10 @@ export function Home() {
 
       <div className="mb-20 grid grid-cols-1 gap-8 lg:grid-cols-2">
         {Array.from({ length: 6 }).map((_, index) => (
-          <a
+          <NavLink
             key={index}
             tabIndex={3}
+            to="/issues/1"
             className="cursor-pointer rounded-lg border-2 border-transparent bg-base-post p-8 outline-none hover:border-base-label focus:border-base-label"
           >
             <div className="mb-5 flex justify-between gap-4">
@@ -96,7 +100,7 @@ export function Home() {
               foo is now a number foo = bar; // foo is now a string foo =
               trueee; // foo is now a boolean
             </p>
-          </a>
+          </NavLink>
         ))}
       </div>
     </div>
