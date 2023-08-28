@@ -1,7 +1,29 @@
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import * as z from 'zod'
+
 import { NavLink } from 'react-router-dom'
 import { ExternalLink, Github, Building, User2 } from 'lucide-react'
 
+const schema = z.object({
+  search: z.string().nonempty({ message: 'Campo obrigatório' }),
+})
+
+type SearchSchema = z.infer<typeof schema>
+
 export function Home() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<SearchSchema>({
+    resolver: zodResolver(schema),
+  })
+
+  function handleSearch(data: SearchSchema) {
+    console.log(data)
+  }
+
   return (
     <div className="-m-24 mx-auto flex w-full max-w-3xl flex-col px-3">
       <div className="flex w-full flex-col items-center gap-8 rounded-lg bg-base-profile p-8 shadow-md md:flex-row ">
@@ -62,13 +84,24 @@ export function Home() {
           </span>
           <span className="text-sm text-base-span">6 publicações</span>
         </div>
-        <input
-          className="rounded-md border border-base-border bg-base-input px-4 py-3 outline-none placeholder:text-base-label focus:border-base-blue"
-          type="text"
-          autoFocus
-          placeholder="Buscar conteúdo..."
-          tabIndex={2}
-        />
+        <form className="relative" onSubmit={handleSubmit(handleSearch)}>
+          <input
+            data-error={errors.search ? 'true' : 'false'}
+            className="w-full rounded-md border border-base-border bg-base-input px-4 py-3 outline-none placeholder:text-base-label focus:border-base-blue data-[error=true]:border-red-500"
+            type="text"
+            autoFocus
+            autoComplete="off"
+            placeholder="Buscar conteúdo..."
+            tabIndex={2}
+            aria-describedby="search-error"
+            {...register('search')}
+          />
+          {errors.search && (
+            <span className=" absolute -bottom-7 left-0 text-red-500">
+              {`${errors.search.message}`}
+            </span>
+          )}
+        </form>
       </div>
 
       <div className="mb-20 grid grid-cols-1 gap-8 lg:grid-cols-2">
