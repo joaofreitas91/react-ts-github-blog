@@ -1,9 +1,10 @@
+import { NavLink } from 'react-router-dom'
+
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
 
-import { NavLink } from 'react-router-dom'
-import { ExternalLink, Github, Building, User2 } from 'lucide-react'
+import { UserWidget } from './UserWidget'
 
 const schema = z.object({
   search: z.string().nonempty({ message: 'Campo obrigatório' }),
@@ -26,58 +27,10 @@ export function Home() {
 
   return (
     <div className="-m-24 mx-auto flex w-full max-w-3xl flex-col px-3">
-      <div className="flex w-full flex-col items-center gap-8 rounded-lg bg-base-profile p-8 shadow-md md:flex-row ">
-        <img
-          className="h-36 w-36 rounded-lg"
-          src="https://avatars.githubusercontent.com/u/80129250?v=4"
-          alt=""
-        />
-        <div>
-          <div className="mb-2 flex items-center justify-between">
-            <h1 className="text-2xl font-bold text-base-title ">
-              João Paulo Freitas
-            </h1>
-            <a
-              className="flex items-center justify-center gap-2 text-base-blue"
-              tabIndex={1}
-              target="_blank"
-              href="https://github.com/joaofreitas91"
-              rel="noreferrer"
-            >
-              <span className="text-xs font-bold">GITHUB</span>
-              <ExternalLink className="mb-[2px] h-3 w-3" />
-            </a>
-          </div>
-          <p>
-            Tristique volutpat pulvinar vel massa, pellentesque egestas. Eu
-            viverra massa quam dignissim aenean malesuada suscipit. Nunc,
-            volutpat pulvinar vel mass.
-          </p>
-          <ul className="mt-6 flex items-center gap-6">
-            <li className="flex items-center gap-2 ">
-              <Github className="h-4 w-4 text-base-label" />
-              <span className=" whitespace-nowrap text-xs md:text-base">
-                joaofreitas
-              </span>
-            </li>
-            <li className="flex items-center gap-2 ">
-              <Building className="h-4 w-4 text-base-label" />
-              <span className=" whitespace-nowrap text-xs md:text-base">
-                Lab2dev
-              </span>
-            </li>
-            <li className="flex items-center gap-1 md:gap-2">
-              <User2 className="h-4 w-4 text-base-label" />
-              <span className=" whitespace-nowrap text-xs md:text-base">
-                4 seguidores
-              </span>
-            </li>
-          </ul>
-        </div>
-      </div>
+      <UserWidget />
 
       {/* Status and search */}
-      <div className="mb-12 mt-[72px] flex w-full flex-col justify-between gap-3">
+      <div className="mb-12 mt-24 flex w-full flex-col justify-between gap-3">
         <div className="flex justify-between">
           <span className="text-lg font-bold text-base-subtitle">
             Publicações
