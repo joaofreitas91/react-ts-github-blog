@@ -1,5 +1,5 @@
 import { Building, ExternalLink, Github, User2 } from 'lucide-react'
-import { useGithubUser } from '../../services/useGithubUser'
+import { useGithubUser } from '../../services/hooks/useGithubUser'
 
 export function UserWidget() {
   const { data, isLoading } = useGithubUser()
