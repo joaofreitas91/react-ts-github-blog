@@ -22,7 +22,7 @@ export function Home() {
   const debouncedQuerySearch = useDebounce(querySearch, 700)
   const { data: issues, isLoading } = useGithubIssues(debouncedQuerySearch)
 
-  const { register, watch } = useForm<SearchSchema>({
+  const { register, watch, handleSubmit } = useForm<SearchSchema>({
     resolver: zodResolver(schema),
   })
 
@@ -46,7 +46,7 @@ export function Home() {
             {issues?.totalCount || 0} resultados
           </span>
         </div>
-        <form className="relative">
+        <form className="relative" onSubmit={handleSubmit(() => {})}>
           <input
             className="w-full rounded-md border border-base-border bg-base-input px-4 py-3 outline-none placeholder:text-base-label focus:border-base-blue"
             type="text"
