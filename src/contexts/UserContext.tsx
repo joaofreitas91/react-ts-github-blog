@@ -13,7 +13,7 @@ interface User {
 
 interface UserContextData {
   user: User | undefined
-  isLoading: boolean
+  isUserLoading: boolean
 }
 
 export const UserContext = createContext({} as UserContextData)
@@ -26,7 +26,7 @@ export function UserProvider({ children }: UserProviderProps) {
   const { data: user, isLoading } = useGithubUser()
 
   return (
-    <UserContext.Provider value={{ user, isLoading }}>
+    <UserContext.Provider value={{ user, isUserLoading: isLoading }}>
       {children}
     </UserContext.Provider>
   )

@@ -77,7 +77,7 @@ export function Home() {
             <NavLink
               key={number}
               tabIndex={3}
-              to="/issues/1"
+              to={`/issues/${number}`}
               className="cursor-pointer rounded-lg border-2 border-transparent bg-base-post p-8 outline-none hover:border-base-label focus:border-base-label"
             >
               <div className="mb-5 flex justify-between gap-4">

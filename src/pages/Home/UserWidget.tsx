@@ -4,11 +4,11 @@ import { UserContext } from '../../contexts/UserContext'
 import { Building, ExternalLink, Github, User2 } from 'lucide-react'
 
 export function UserWidget() {
-  const { isLoading, user } = useContext(UserContext)
+  const { isUserLoading, user } = useContext(UserContext)
 
   return (
     <>
-      {isLoading && (
+      {isUserLoading && (
         <div className="flex w-full flex-col items-center justify-start gap-8 rounded-lg bg-base-profile p-8 shadow-md md:flex-row ">
           <div className="block h-36 w-36 shrink-0 animate-pulse rounded-lg bg-base-label" />
           <div className="w-full">
